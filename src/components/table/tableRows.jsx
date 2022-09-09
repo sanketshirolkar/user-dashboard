@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React, { useState } from "react";
 
 export const RenderId = (data) => {
@@ -19,17 +20,10 @@ export const RenderLastName = (data) => {
 export const RenderAvataar = (data) => {
   return (
     <div>
-      <img src={data?.avatar} alt={"Avatar Image"} />
+      <img src={data?.avatar} width="100px" height="120px" alt="Avatar" />
     </div>
   );
 };
-
-// export const RenderItems = (data) => {
-//   let splitValue = data?.items.split(";").join(" ");
-//   let abc = splitValue.split(":").join("-");
-
-//   return <div>{abc}</div>;
-// };
 
 export const tableRows = [
   {

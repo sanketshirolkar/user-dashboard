@@ -1,0 +1,8 @@
+.live_users{
+    margin: 10px;
+    width: 100%;
+}
+
+.live_users::-webkit-scrollbar {
+    display: none;
+}

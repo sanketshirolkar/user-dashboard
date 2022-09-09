@@ -1,12 +1,10 @@
-/* .app{
-  overflow: hidden;
-} */
-
 .app_layout{
   display: flex;
+  flex: 0.1;
   justify-content: flex-start;
 }
 
 .comp_layout{
-  margin: 100px 0 0 150px;
+  flex: 0.9;
+  margin: 80px 0 0 250px;
 }

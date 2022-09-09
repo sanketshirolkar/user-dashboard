@@ -1,6 +1,7 @@
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Sidebar from "../src/components/sidebar/Sidebar";
+import Navbar from "./components/navbar/Navbar";
 import AddUser from "./views/addUser/AddUser";
 import TotalUsers from "./views/totalUsers/TotalUsers";
 import LiveUsers from "./views/liveUsers/LiveUsers";
@@ -11,6 +12,7 @@ function App() {
         <BrowserRouter>
           <div className="app_layout">
             <Sidebar/>
+            <Navbar />
             <div className="comp_layout">
               <Routes>
                 <Route path="/" element={<AddUser/>} />
