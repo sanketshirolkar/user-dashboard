@@ -47,7 +47,7 @@ const LiveUsers = () => {
 
   return (
     <div className="live_users">
-      <div className="input_container">
+      <div className="input_containers">
         <Input
           type="text"
           value={searchKey}
