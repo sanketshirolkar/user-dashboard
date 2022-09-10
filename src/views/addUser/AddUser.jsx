@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import "./addUser.css";
 import Input from "../../components/input/Input";
+import { useSelector, useDispatch } from "react-redux";
+import { storeNewUser } from "../../redux/actions/users.actions";
+import { getAllUsersList } from "../../redux/selectors/users.selector";
+
 //import Checkbox from "../../components/checkbox/Checkbox";
 
 const AddUser = () => {
@@ -9,6 +13,8 @@ const AddUser = () => {
     email: "",
     address: "",
   });
+  const allUsersList = useSelector(getAllUsersList);
+  const dispatch = useDispatch();
 
   // const [checkedOne, setCheckedOne] = React.useState(true);
   // const [checkedTwo, setCheckedTwo] = React.useState(false);
@@ -25,7 +31,15 @@ const AddUser = () => {
     setUserDetails({ ...userDetails, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {};
+  const handleSubmit = (userDetails) => {
+    let addNewUserObject = { ...allUsersList };
+    addNewUserObject = Object.assign({}, addNewUserObject, {
+      newUser: userDetails,
+    });
+    dispatch(storeNewUser(addNewUserObject));
+  };
+
+  console.log(allUsersList, "HIIIII");
 
   return (
     <div className="addUser_container">
@@ -40,17 +54,17 @@ const AddUser = () => {
             onChange={handleOnChange}
           />
           <Input
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={userDetails?.password}
-            onChange={handleOnChange}
-          />
-          <Input
             type="email"
             name="email"
             placeholder="E-Mail"
             value={userDetails?.email}
+            onChange={handleOnChange}
+          />
+          <Input
+            type="text"
+            name="address"
+            placeholder="Address"
+            value={userDetails?.address}
             onChange={handleOnChange}
           />
           {/* <Checkbox
@@ -67,7 +81,10 @@ const AddUser = () => {
             name="hobby 2"
             value="Cricket"
           /> */}
-          <button className="button_container" onClick={handleSubmit}>
+          <button
+            className="button_container"
+            onClick={handleSubmit(userDetails)}
+          >
             Add User
           </button>
         </div>

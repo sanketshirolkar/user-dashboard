@@ -1,7 +1,8 @@
 import * as actions from "../actionConstants";
 
 const initialState = {
-    liveUsers: []
+    liveUsers: [],
+    newUserData: {},
 };
 
 const storeLiveUsers = (state, action) =>{
@@ -9,10 +10,20 @@ const storeLiveUsers = (state, action) =>{
         ...state, 
         liveUsers: action.payload,
     }
-}
+};
+
+const storeNewUser = (state, action) =>{
+    return {
+        ...state, 
+        newUserData: action.payload,
+    }
+};
+
+
 
 const handlers = {
     [actions.STORE_LIVEUSERS]: storeLiveUsers,
+    [actions.STORE_NEWUSER]: storeNewUser,
 };
 
 

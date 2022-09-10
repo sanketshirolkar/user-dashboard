@@ -8,3 +8,9 @@ export const storeLiveUsers = (data) => ({
     type: actions.STORE_LIVEUSERS,
     payload:data
 });
+
+export const storeNewUser = (data) => ({
+    type: actions.STORE_NEWUSER,
+    payload:data
+});
+
