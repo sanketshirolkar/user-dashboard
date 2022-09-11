@@ -8,7 +8,7 @@ import { getAllUsersList } from "../../redux/selectors/users.selector";
 const AddUser = () => {
   const dispatch = useDispatch();
   const allUsersList = useSelector(getAllUsersList);
-  let { newUser = [{ id: 1, name: "", email: "", address: "" }], count = 0 } =
+  let { newUser = [{ id: 1, name: "", email: "", address: "" }] } =
     allUsersList;
   const [userCount, setUserCount] = useState(0);
 
@@ -44,7 +44,6 @@ const AddUser = () => {
           <div className="title_container">Add User</div>
           <div>
             <Input
-              id={userCount}
               type="text"
               name="name"
               placeholder="Name"
@@ -52,7 +51,6 @@ const AddUser = () => {
               onChange={(e) => handleChange("name", e)}
             />
             <Input
-              id={userCount}
               type="email"
               name="email"
               placeholder="E-Mail"
