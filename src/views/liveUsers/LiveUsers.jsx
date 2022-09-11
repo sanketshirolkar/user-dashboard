@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import "./liveUsers.css";
 import Table from "../../components/table/Table";
 import Input from "../../components/input/Input";
@@ -6,7 +6,6 @@ import { tableRows } from "./tableRows";
 import { useSelector, useDispatch } from "react-redux";
 import { requestLiveUsers } from "../../redux/actions/users.actions";
 import { getLiveUsersList } from "../../redux/selectors/users.selector";
-import { useCallback } from "react";
 
 const LiveUsers = () => {
   const dispatch = useDispatch();

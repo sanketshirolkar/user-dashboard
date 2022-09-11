@@ -15,7 +15,7 @@ const Table = ({ rows, data }) => {
           </tr>
         </thead>
         <tbody>
-          {data.map((dataItem) => (
+          {data.map((dataItem, index) => (
             <tr key={dataItem?.id}>
               {rows.map((row) => (
                 <td key={row.index}>{row.render(dataItem)}</td>

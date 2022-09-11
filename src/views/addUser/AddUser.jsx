@@ -8,30 +8,34 @@ import { getAllUsersList } from "../../redux/selectors/users.selector";
 const AddUser = () => {
   const dispatch = useDispatch();
   const allUsersList = useSelector(getAllUsersList);
-  let { newUser = [{ name: "", email: "", address: "" }] } = allUsersList;
+  let { newUser = [{ id: 1, name: "", email: "", address: "" }] } =
+    allUsersList;
   const [userCount, setUserCount] = useState(0);
 
   const handleChange = (name, e) => {
     let newUserObject = { ...allUsersList };
-
-    newUser[userCount] = { ...newUser[userCount], [name]: e.target.value };
+    newUser[userCount] = {
+      ...newUser[userCount],
+      [name]: e.target.value,
+      id: userCount + 1,
+    };
     newUserObject = Object.assign({}, newUserObject, {
       newUser,
     });
     dispatch(storeNewUser(newUserObject));
   };
-
-  console.log(allUsersList, "All Uers");
 
   const handleSubmit = () => {
     let newUserObject = { ...allUsersList };
     newUserObject = Object.assign({}, newUserObject, {
       newUser,
+      count: userCount + 1,
     });
     setUserCount((prevState) => prevState + 1);
     dispatch(storeNewUser(newUserObject));
-    
   };
+
+  console.log(allUsersList, "All Uers");
 
   return (
     <div className="addUser_container">
@@ -40,6 +44,7 @@ const AddUser = () => {
           <div className="title_container">Add User</div>
           <div>
             <Input
+              id={userCount}
               type="text"
               name="name"
               placeholder="Name"
@@ -47,6 +52,7 @@ const AddUser = () => {
               onChange={(e) => handleChange("name", e)}
             />
             <Input
+              id={userCount}
               type="email"
               name="email"
               placeholder="E-Mail"
