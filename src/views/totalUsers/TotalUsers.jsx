@@ -31,8 +31,8 @@ const TotalUsers = () => {
         });
       }
       setFilteredTotalUsers(newData);
-      console.log(filteredTotalUsers, "TotalFiler");
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchKey]);
 
   useEffect(() => {

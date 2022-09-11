@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./addUser.css";
 import Input from "../../components/input/Input";
 import { useSelector, useDispatch } from "react-redux";
