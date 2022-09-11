@@ -30,6 +30,7 @@ const AddUser = () => {
     });
     setUserCount((prevState) => prevState + 1);
     dispatch(storeNewUser(newUserObject));
+    
   };
 
   return (
@@ -37,7 +38,6 @@ const AddUser = () => {
       <div className="input_container">
         <div className="form_container">
           <div className="title_container">Add User</div>
-          {/* {newUser?.map((item, index) => ( */}
           <div>
             <Input
               type="text"
@@ -61,7 +61,6 @@ const AddUser = () => {
               onChange={(e) => handleChange("address", e)}
             />
           </div>
-          {/* ))} */}
           <button className="button_container" onClick={handleSubmit}>
             Add User
           </button>
