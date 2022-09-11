@@ -14,3 +14,7 @@ export const storeNewUser = (data) => ({
     payload:data
 });
 
+export const increment = () => ({
+    type: actions.INCREMENT,
+    //payload:data
+});

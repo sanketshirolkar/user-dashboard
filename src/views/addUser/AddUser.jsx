@@ -2,22 +2,25 @@ import React, { useState } from "react";
 import "./addUser.css";
 import Input from "../../components/input/Input";
 import { useSelector, useDispatch } from "react-redux";
-import { storeNewUser } from "../../redux/actions/users.actions";
-import { getAllUsersList } from "../../redux/selectors/users.selector";
+import { increment, storeNewUser } from "../../redux/actions/users.actions";
+import {
+  getAllUsersList,
+  getCount,
+} from "../../redux/selectors/users.selector";
 
 const AddUser = () => {
   const dispatch = useDispatch();
   const allUsersList = useSelector(getAllUsersList);
   let { newUser = [{ id: 1, name: "", email: "", address: "" }] } =
     allUsersList;
-  const [userCount, setUserCount] = useState(0);
+  const counterValue = useSelector(getCount);
 
   const handleChange = (name, e) => {
     let newUserObject = { ...allUsersList };
-    newUser[userCount] = {
-      ...newUser[userCount],
+    newUser[counterValue] = {
+      ...newUser[counterValue],
       [name]: e.target.value,
-      id: userCount + 1,
+      id: counterValue + 1,
     };
     newUserObject = Object.assign({}, newUserObject, {
       newUser,
@@ -29,13 +32,11 @@ const AddUser = () => {
     let newUserObject = { ...allUsersList };
     newUserObject = Object.assign({}, newUserObject, {
       newUser,
-      count: userCount + 1,
+      count: counterValue + 1,
     });
-    setUserCount((prevState) => prevState + 1);
     dispatch(storeNewUser(newUserObject));
+    dispatch(increment());
   };
-
-  console.log(allUsersList, "All Uers");
 
   return (
     <div className="addUser_container">
