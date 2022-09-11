@@ -3,8 +3,13 @@ import "./sidebar.css";
 import { sidebarMenuItems } from "./sidebarMenu";
 import dashboardLogo from "../../assets/logo/User-Dashboard.jpg";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { getAllUsersList } from "../../redux/selectors/users.selector";
 
 const Sidebar = () => {
+  const allUsersList = useSelector(getAllUsersList);
+  const extractedUserData = Object.values(allUsersList);
+
   return (
     <div className="sidebar_container">
       <div className="main_logo">
@@ -22,12 +27,30 @@ const Sidebar = () => {
               to={sidebarRoutes?.path}
               key={index}
               className="sidebar_links"
+              activeclassName="active"
             >
               <div className="sidebarItems_menu">
                 <div className="sidebar_logos">
-                  <img src={sidebarRoutes?.logo} alt={""} width="50px" />
+                  <img
+                    src={sidebarRoutes?.logo}
+                    alt={""}
+                    width="70px"
+                    height="50px"
+                  />
                 </div>
-                <div className="sidebarItems_name">{sidebarRoutes?.name}</div>
+                {sidebarRoutes?.name === "Total Users" ? (
+                  <div className="badge_container">
+                    <div className="sidebarItems_name">
+                      {sidebarRoutes?.name}
+                    </div>
+                    <span>
+                      {" "}
+                      {extractedUserData[1] ? extractedUserData[1] : 0}
+                    </span>
+                  </div>
+                ) : (
+                  <div className="sidebarItems_name">{sidebarRoutes?.name}</div>
+                )}
               </div>
             </NavLink>
           );

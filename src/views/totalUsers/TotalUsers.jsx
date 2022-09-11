@@ -51,6 +51,10 @@ const TotalUsers = () => {
           }}
           placeholder="Search"
         />
+        <div>
+          Total Number Of Users :{" "}
+          {extractedUserData[1] ? extractedUserData[1] : 0}
+        </div>
       </div>
       <div>
         <Table rows={tableRowsData} data={filteredTotalUsers} />

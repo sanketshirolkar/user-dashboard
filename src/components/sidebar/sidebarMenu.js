@@ -10,18 +10,18 @@ export const sidebarMenuItems = [
         path:"/",
         name:"Add User",
         logo:addUserLogo,
-        component: AddUser
+        component: AddUser,
     },
     {
         path:"/totalUsers",
         name:"Total Users",
         logo:totalUsersLogo,
-        component: TotalUsers
+        component: TotalUsers,
     },
     {
         path:"/liveUsers",
         name:"Live Users",
         logo:liveUsersLogo,
-        component: LiveUsers
+        component: LiveUsers,
     },
 ];

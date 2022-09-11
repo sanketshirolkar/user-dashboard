@@ -8,7 +8,7 @@ import { getAllUsersList } from "../../redux/selectors/users.selector";
 const AddUser = () => {
   const dispatch = useDispatch();
   const allUsersList = useSelector(getAllUsersList);
-  let { newUser = [{ id: 1, name: "", email: "", address: "" }] } =
+  let { newUser = [{ id: 1, name: "", email: "", address: "" }], count = 0 } =
     allUsersList;
   const [userCount, setUserCount] = useState(0);
 
